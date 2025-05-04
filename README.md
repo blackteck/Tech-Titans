@@ -5,7 +5,7 @@ Understand Python and Django: Basic understanding of Python programming and fami
 
 git clone https://github.com/blackteck/Tech-Titans.git
 
-cd sales-and-inventory-management
+cd Tech-Titans
 
 python -m venv venv
 
