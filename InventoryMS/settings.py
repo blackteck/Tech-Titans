@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'transactions.apps.TransactionsConfig',
     'invoice.apps.InvoiceConfig',
     'bills.apps.BillsConfig',
+    'chat',
 ]
 
 MIDDLEWARE = [
