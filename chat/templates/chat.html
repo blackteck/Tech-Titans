@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Chatbot</h2>
+    <div id="chat-box" style="border:1px solid #ccc; padding:10px; height:200px; overflow:auto;"></div>
+    <input type="text" id="user-input" placeholder="Ask something..." autofocus />
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            var message = $('#user-input').val();
+            $('#chat-box').append('<p><strong>You:</strong> ' + message + '</p>');
+            $.post('/chatbot/', { message: message, csrfmiddlewaretoken: '{{ csrf_token }}' }, function(data) {
+                data.response.forEach(function(line) {
+                    $('#chat-box').append('<p><strong>Bot:</strong> ' + line + '</p>');
+                });
+                $('#user-input').val('');
+                $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
+            });
+        }
+    </script>
+</body>
+</html>
